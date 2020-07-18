@@ -11,6 +11,18 @@ NAMES = ['arnold schwarzenegger', 'alec baldwin', 'bob belderbos',
          'julian sequeira', 'sandra bullock', 'keanu reeves',
          'julbob pybites', 'bob belderbos', 'julian sequeira',
          'al pacino', 'brad pitt', 'matt damon', 'brad pitt']
+
+
+
+def test_dedup_and_title_case_names():
+    names = dedup_and_title_case_names(NAMES)
+    assert names.count('Bob Belderbos') == 1
+    assert names.count('julian sequeira') == 0
+    assert names.count('Brad Pitt') == 1
+    assert len(names) == 10
+    assert all(n.title() in names for n in NAMES)
+
+
 def dedup_and_title_case_names(names):
     """Should return a list of title cased names,
        each name appears only once"""
@@ -24,8 +36,7 @@ def dedup_and_title_case_names(names):
 
 
 def main():
-    NAMES1 = dedup_and_title_case_names(NAMES)
-    test = NAMES1
+    test_dedup_and_title_case_names()
 
 
 if __name__ == '__main__':
