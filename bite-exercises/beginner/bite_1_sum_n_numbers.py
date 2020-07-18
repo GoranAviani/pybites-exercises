@@ -18,15 +18,12 @@ def test_sum_numbers_various_inputs():
     assert sum_numbers([]) == 0  # !! [] not the same as None
 
 def sum_numbers(numbers=None):
-    addition = 0
     if numbers == []:
-        return addition
+        return 0
     elif not numbers:
-        for x in range(1, 101):
-            addition += x
+        addition = sum(range(1, 101))
     else:
-        for x in numbers:
-            addition += x
+        addition = sum(numbers)
 
     return addition
 
