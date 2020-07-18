@@ -20,7 +20,7 @@ def test_sum_numbers_various_inputs():
 def sum_numbers(numbers=None):
     addition = 0
     if numbers == []:
-        return 0
+        return addition
     elif not numbers:
         for x in range(1, 101):
             addition += x
