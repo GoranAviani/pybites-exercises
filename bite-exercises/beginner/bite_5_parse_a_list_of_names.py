@@ -12,6 +12,9 @@ NAMES = ['arnold schwarzenegger', 'alec baldwin', 'bob belderbos',
          'julbob pybites', 'bob belderbos', 'julian sequeira',
          'al pacino', 'brad pitt', 'matt damon', 'brad pitt']
 
+PY_CONTENT_CREATORS = ['brian okken', 'michael kennedy', 'trey hunner',
+                       'matt harrison', 'julian sequeira', 'dan bader',
+                       'michael kennedy', 'brian okken', 'dan bader']
 
 
 def test_dedup_and_title_case_names():
@@ -21,6 +24,45 @@ def test_dedup_and_title_case_names():
     assert names.count('Brad Pitt') == 1
     assert len(names) == 10
     assert all(n.title() in names for n in NAMES)
+
+def test_dedup_and_title_case_names_different_names_list():
+    actual = sorted(dedup_and_title_case_names(PY_CONTENT_CREATORS))
+    expected = ['Brian Okken', 'Dan Bader', 'Julian Sequeira',
+                'Matt Harrison', 'Michael Kennedy', 'Trey Hunner']
+    assert actual == expected
+
+def test_sort_by_surname_desc_different_names_list():
+    names = sort_by_surname_desc(PY_CONTENT_CREATORS)
+    assert names[0] == 'Julian Sequeira'
+    assert names[-1] == 'Dan Bader'
+
+def test_shortest_first_name():
+    assert shortest_first_name(NAMES) == 'Al'
+
+def test_shortest_first_name_different_names_list():
+    assert shortest_first_name(PY_CONTENT_CREATORS) == 'Dan'
+
+
+def main():
+    test_dedup_and_title_case_names()
+    test_dedup_and_title_case_names_different_names_list()
+    test_sort_by_surname_desc_different_names_list()
+    test_shortest_first_name()
+    test_shortest_first_name_different_names_list()
+
+def shortest_first_name(names):
+    all_first_names = []
+    for full_name in names:
+        full_name_list = full_name.split(" ")
+        all_first_names.append(full_name_list[0].title())
+
+    shortest = all_first_names[0]
+    for name in all_first_names:
+        if len(name) < len(shortest):
+            shortest = name
+    test = shortest
+    return shortest
+
 
 
 def dedup_and_title_case_names(names):
@@ -33,11 +75,38 @@ def dedup_and_title_case_names(names):
             result.append(title_name)
     return result
 
+def sort_by_surname_desc(names):
+    """
+
+    :param names:
+    :return:
+    """
+    result_list = []
+    master_list = []
+    for full_name in names:
+        title_name = full_name.title()
+        full_name_list = title_name.split(" ")
+        full_info_dict = {"last_name": full_name_list[1], "full_name": title_name}
+        master_list.append(full_info_dict)
+
+    print(master_list)
+
+    sorted_list_od_dicts = sort_by_last_name(master_list)
+    result_list = dict_to_list(sorted_list_od_dicts)
+
+    return result_list
+
+def dict_to_list(sorted_list_od_dicts):
+    result = []
+    for full_info in sorted_list_od_dicts:
+        result.append(full_info["full_name"])
+    return result
 
 
-def main():
-    test_dedup_and_title_case_names()
-
+def sort_by_last_name(full_info_dict):
+    from operator import itemgetter
+    result = sorted(full_info_dict, key=itemgetter('last_name'), reverse=True)
+    return result
 
 if __name__ == '__main__':
     main()
