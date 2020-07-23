@@ -39,7 +39,8 @@ def test_sort_by_surname_desc_different_names_list():
 def test_shortest_first_name():
     assert shortest_first_name(NAMES) == 'Al'
 
-
+def test_shortest_first_name_different_names_list():
+    assert shortest_first_name(PY_CONTENT_CREATORS) == 'Dan'
 
 
 def main():
@@ -47,6 +48,7 @@ def main():
     test_dedup_and_title_case_names_different_names_list()
     test_sort_by_surname_desc_different_names_list()
     test_shortest_first_name()
+    test_shortest_first_name_different_names_list()
 
 def shortest_first_name(names):
     all_first_names = []
@@ -54,7 +56,7 @@ def shortest_first_name(names):
         full_name_list = full_name.split(" ")
         all_first_names.append(full_name_list[0])
 
-    shortest = full_name_list[0]
+    shortest = full_name_list[0].title()
     for name in all_first_names:
         if len(name) < len(shortest):
             shortest = name.title()
