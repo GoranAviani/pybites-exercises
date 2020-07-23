@@ -36,7 +36,7 @@ def test_dedup_and_title_case_names_different_names_list():
 
 def main():
     test_dedup_and_title_case_names()
-
+    test_dedup_and_title_case_names_different_names_list()
 
 
 
