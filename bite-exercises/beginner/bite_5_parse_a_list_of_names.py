@@ -54,12 +54,12 @@ def shortest_first_name(names):
     all_first_names = []
     for full_name in names:
         full_name_list = full_name.split(" ")
-        all_first_names.append(full_name_list[0])
+        all_first_names.append(full_name_list[0].title())
 
-    shortest = full_name_list[0].title()
+    shortest = all_first_names[0]
     for name in all_first_names:
         if len(name) < len(shortest):
-            shortest = name.title()
+            shortest = name
     test = shortest
     return shortest
 
