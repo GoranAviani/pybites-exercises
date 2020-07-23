@@ -12,6 +12,9 @@ NAMES = ['arnold schwarzenegger', 'alec baldwin', 'bob belderbos',
          'julbob pybites', 'bob belderbos', 'julian sequeira',
          'al pacino', 'brad pitt', 'matt damon', 'brad pitt']
 
+PY_CONTENT_CREATORS = ['brian okken', 'michael kennedy', 'trey hunner',
+                       'matt harrison', 'julian sequeira', 'dan bader',
+                       'michael kennedy', 'brian okken', 'dan bader']
 
 
 def test_dedup_and_title_case_names():
@@ -21,6 +24,20 @@ def test_dedup_and_title_case_names():
     assert names.count('Brad Pitt') == 1
     assert len(names) == 10
     assert all(n.title() in names for n in NAMES)
+
+def test_dedup_and_title_case_names_different_names_list():
+    actual = sorted(dedup_and_title_case_names(PY_CONTENT_CREATORS))
+    expected = ['Brian Okken', 'Dan Bader', 'Julian Sequeira',
+                'Matt Harrison', 'Michael Kennedy', 'Trey Hunner']
+    assert actual == expected
+
+
+
+
+def main():
+    test_dedup_and_title_case_names()
+
+
 
 
 def dedup_and_title_case_names(names):
@@ -32,11 +49,6 @@ def dedup_and_title_case_names(names):
         if title_name not in result:
             result.append(title_name)
     return result
-
-
-
-def main():
-    test_dedup_and_title_case_names()
 
 
 if __name__ == '__main__':
