@@ -31,13 +31,16 @@ def test_dedup_and_title_case_names_different_names_list():
                 'Matt Harrison', 'Michael Kennedy', 'Trey Hunner']
     assert actual == expected
 
-
+def test_sort_by_surname_desc_different_names_list():
+    names = sort_by_surname_desc(PY_CONTENT_CREATORS)
+    assert names[0] == 'Julian Sequeira'
+    assert names[-1] == 'Dan Bader'
 
 
 def main():
     test_dedup_and_title_case_names()
     test_dedup_and_title_case_names_different_names_list()
-
+    test_sort_by_surname_desc_different_names_list()
 
 
 def dedup_and_title_case_names(names):
@@ -50,6 +53,28 @@ def dedup_and_title_case_names(names):
             result.append(title_name)
     return result
 
+def sort_by_surname_desc(names):
+    """
+
+    :param names:
+    :return:
+    """
+    result_list = []
+    master_list = []
+    for full_name in names:
+        title_name = full_name.title()
+        full_name_list = title_name.split(" ")
+        full_info_dict = {"last_name": full_name_list[1], "full_name": title_name}
+        master_list.append(full_info_dict)
+
+    print(full_info_dict)
+
+    sorted_list = sort_by_last_name(full_info_dict)
+
+def sort_by_last_name(full_info_dict):
+    from operator import itemgetter
+    result = sorted(full_info_dict, key=itemgetter('last_name'), reverse=True)
+    return result
 
 if __name__ == '__main__':
     main()
