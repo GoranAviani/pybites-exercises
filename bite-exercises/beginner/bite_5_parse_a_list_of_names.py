@@ -36,6 +36,8 @@ def test_sort_by_surname_desc_different_names_list():
     assert names[0] == 'Julian Sequeira'
     assert names[-1] == 'Dan Bader'
 
+def test_shortest_first_name():
+    assert shortest_first_name(NAMES) == 'Al'
 
 
 
@@ -44,6 +46,22 @@ def main():
     test_dedup_and_title_case_names()
     test_dedup_and_title_case_names_different_names_list()
     test_sort_by_surname_desc_different_names_list()
+    test_shortest_first_name()
+
+def shortest_first_name(names):
+    all_first_names = []
+    for full_name in names:
+        full_name_list = full_name.split(" ")
+        all_first_names.append(full_name_list[0])
+
+    shortest = full_name_list[0]
+    for name in all_first_names:
+        if len(name) < len(shortest):
+            shortest = name.title()
+    test = shortest
+    return shortest
+
+
 
 def dedup_and_title_case_names(names):
     """Should return a list of title cased names,
@@ -72,8 +90,6 @@ def sort_by_surname_desc(names):
     print(master_list)
 
     sorted_list_od_dicts = sort_by_last_name(master_list)
-
-
     result_list = dict_to_list(sorted_list_od_dicts)
 
     return result_list
