@@ -29,10 +29,8 @@ def main():
 def allowed_driving(name, age):
     """Print '{name} is allowed to drive' or '{name} is not allowed to drive'
        checking the passed in age against the MIN_DRIVING_AGE constant"""
-    if age >= MIN_DRIVING_AGE:
-        return (f"{name} is allowed to drive")
-    else:
-        return (f"{name} is not allowed to drive")
+    return (f"{name} is allowed to drive") if age >= MIN_DRIVING_AGE else (f"{name} is not allowed to drive")
+
 
 #def allowed_driving(name, age):
 #    """Print '{name} is allowed to drive' or '{name} is not allowed to drive'
