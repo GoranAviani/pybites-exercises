@@ -67,9 +67,21 @@ def sort_by_surname_desc(names):
         full_info_dict = {"last_name": full_name_list[1], "full_name": title_name}
         master_list.append(full_info_dict)
 
-    print(full_info_dict)
+    print(master_list)
 
-    sorted_list = sort_by_last_name(full_info_dict)
+    sorted_list_od_dicts = sort_by_last_name(master_list)
+
+
+    result_list = dict_to_list(sorted_list_od_dicts)
+
+    return result_list
+
+def dict_to_list(sorted_list_od_dicts):
+    result = []
+    for full_info in sorted_list_od_dicts:
+        result.append(full_info["full_name"])
+    return result
+
 
 def sort_by_last_name(full_info_dict):
     from operator import itemgetter
