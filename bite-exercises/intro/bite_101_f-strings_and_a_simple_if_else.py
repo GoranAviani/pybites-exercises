@@ -10,16 +10,16 @@ MIN_DRIVING_AGE = 18
 
 
 def main():
-    test_not_allowed_to_drive()
-
+    #test_not_allowed_to_drive()
+    pass
 
 def allowed_driving(name, age):
     """Print '{name} is allowed to drive' or '{name} is not allowed to drive'
        checking the passed in age against the MIN_DRIVING_AGE constant"""
     if age < MIN_DRIVING_AGE:
-        print('{} is allowed to drive' .format(name))
+        print(f"{name} is allowed to drive")
     else:
-        print('{} is not allowed to drive' .format(name))
+        print(f"{name} is not allowed to drive")
 
 if __name__ == '__main__':
     main()
