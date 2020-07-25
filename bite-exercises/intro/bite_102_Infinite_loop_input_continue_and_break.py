@@ -9,6 +9,7 @@
     provided that in the template code, just code inside that loop.
 """
 VALID_COLORS = ['blue', 'yellow', 'red']
+NOT_VALID = 'Not a valid color'
 
 
 #TESTS:
@@ -29,6 +30,8 @@ def print_colors():
         user_input = user_input.lower()
         if user_input in VALID_COLORS:
             print(user_input)
+        else:
+            print(NOT_VALID)
 
         if user_input == 'quit':
             print('bye')
