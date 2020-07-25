@@ -8,9 +8,35 @@
     As you want to ask the user over and over again till they quit, you can use an infinite while loop. We already
     provided that in the template code, just code inside that loop.
 """
+VALID_COLORS = ['blue', 'yellow', 'red']
+
+
+#TESTS:
+def call_print_colors():
+    # some people prefer sys.exit instead of break
+    try:
+        print_colors()
+    except SystemExit:
+        pass
+
+
+
+#CODE:
+
+def print_colors():
+    while True:
+        user_input = input("enter color")
+        user_input = user_input.lower()
+        if user_input in VALID_COLORS:
+            print(user_input)
+
+        if user_input == 'quit':
+            print('bye')
+            break
 
 def main():
-    pass
+    print_colors()
+
 
 if __name__ == '__main__':
     main()
