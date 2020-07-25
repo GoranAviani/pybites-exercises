@@ -26,16 +26,17 @@ def call_print_colors():
 
 def print_colors():
     while True:
-        user_input = input("enter color")
+        user_input = input("Enter a color: ")
         user_input = user_input.lower()
-        if user_input in VALID_COLORS:
-            print(user_input)
-        else:
-            print(NOT_VALID)
 
         if user_input == 'quit':
             print('bye')
             break
+
+        if user_input in VALID_COLORS:
+            print(user_input)
+        else:
+            print(NOT_VALID)
 
 def main():
     print_colors()
