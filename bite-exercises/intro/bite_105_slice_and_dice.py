@@ -1,5 +1,14 @@
-from string import ascii_lowercase
+"""
+    Take the block of text provided and strip off the whitespace at both ends. Split the text by newline (\n).
+    Loop through the lines, for each line:
+        strip off any leading spaces,
+        check if the first character is lowercase,
+        if so, split the line into words and get the last word,
+        strip off BOTH the trailing dot (.) and exclamation mark (!) from this last word,
+        and finally add it to the results list.
+    Return the results list.
 
+"""
 text = """
 One really nice feature of Python is polymorphism: using the same operation
 on different types of objects.
