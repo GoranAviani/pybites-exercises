@@ -7,11 +7,10 @@
 games_won = dict(sara=0, bob=1, tim=5, julian=3, jim=1)
 
 
-
 def main():
     for name, result in games_won.items():
         game_single_plural = 'game'
-        if result > 1:
+        if result > 1 or result == 0:
             game_single_plural = 'games'
         print('{} has won {} {}'. format(name, result, game_single_plural))
 
