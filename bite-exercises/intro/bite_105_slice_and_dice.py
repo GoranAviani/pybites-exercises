@@ -46,6 +46,7 @@ def test_slice_and_dice_other_text():
 def slice_and_dice(text: str = text) -> list:
     """Get a list of words from the passed in text.
        See the Bite description for step by step instructions"""
+    result = []
     text = text.strip()
     text = text.split('\n')
 
@@ -57,6 +58,13 @@ def slice_and_dice(text: str = text) -> list:
 
     for sentence in cleanded_sentence:
         if sentence[0].islower():
+            sentence_split = sentence.split(" ")
+            last_word = sentence_split[len(sentence_split) -1: len(sentence_split)]
+            last_word = last_word[0].replace('.','')
+            last_word = last_word.replace('!', '')
+            result.append(last_word)
+
+            test = result
 
 
 
