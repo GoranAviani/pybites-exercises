@@ -1,5 +1,6 @@
 """
-    Take the block of text provided and strip off the whitespace at both ends. Split the text by newline (\n).
+    Take the block of text provided and strip off the whitespace at both ends.
+    Split the text by newline (\n).
     Loop through the lines, for each line:
         strip off any leading spaces,
         check if the first character is lowercase,
@@ -45,11 +46,25 @@ def test_slice_and_dice_other_text():
 def slice_and_dice(text: str = text) -> list:
     """Get a list of words from the passed in text.
        See the Bite description for step by step instructions"""
+    text = text.strip()
+    text = text.split('\n')
+
+    cleanded_sentence = []
+    for sentence in text:
+        sentence = sentence.strip()
+        cleanded_sentence.append(sentence)
+
+
+    for sentence in cleanded_sentence:
+        if sentence[0].islower():
+
+
+
     results = []
 
 
 def main():
-    pass
+    slice_and_dice(text)
 
 if __name__ == '__main__':
     main()
