@@ -13,9 +13,18 @@ def test_split_in_columns_default_message():
     actual = split_in_columns()
     assert actual == expected
 
+def test_split_in_columns_on_other_message():
+    expected = 'Hello world:|I am coding in Python :)|How awesome!'
+
+    message = 'Hello world:\nI am coding in Python :)\nHow awesome!'
+    actual = split_in_columns(message)
+
+    assert actual == expected
+
 def main():
     result = split_in_columns(message)
     test_split_in_columns_default_message()
+    test_split_in_columns_on_other_message()
 
 def split_in_columns(message=message):
     """Split the message by newline (\n) and join it together on '|'
