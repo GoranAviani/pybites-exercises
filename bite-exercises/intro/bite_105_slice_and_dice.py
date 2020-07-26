@@ -65,14 +65,14 @@ def slice_and_dice(text: str = text) -> list:
             result.append(last_word)
 
             test = result
+    return result
 
-
-
-    results = []
 
 
 def main():
-    slice_and_dice(text)
+    result = slice_and_dice(text)
+    test_slice_and_dice_default_text()
+    test_slice_and_dice_other_text()
 
 if __name__ == '__main__':
     main()
