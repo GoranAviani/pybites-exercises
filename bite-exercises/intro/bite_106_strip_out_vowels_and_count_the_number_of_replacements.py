@@ -9,6 +9,7 @@
     Bonus: if you already have some Python under your belt, try to use re and try to solve it without a for loop :)
 """
 
+from typing import Tuple
 text = """
 The Zen of Python, by Tim Peters
 
@@ -48,12 +49,21 @@ def strip_vowels(text: str) -> Tuple[str, int]:
        The str/int types in the function defintion above are part
        of Python's new type hinting:
        https://docs.python.org/3/library/typing.html"""
-    pass
+    result = ''
+    counter = 0
+    for x in text:
+        letter = x
+        if x.lower() in vowels:
+            letter = '*'
+            counter += 1
+        result += letter
+
+    return result, counter
 
 
 
 def main():
-    pass
+    output, number_replacements = strip_vowels(text)
 
 def test_strip_vowels_on_zen():
     output, number_replacements = strip_vowels(text)
