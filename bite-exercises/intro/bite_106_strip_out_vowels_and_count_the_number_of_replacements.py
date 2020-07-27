@@ -64,6 +64,7 @@ def strip_vowels(text: str) -> Tuple[str, int]:
 
 def main():
     output, number_replacements = strip_vowels(text)
+    test_strip_vowels_on_zen()
 
 def test_strip_vowels_on_zen():
     output, number_replacements = strip_vowels(text)
