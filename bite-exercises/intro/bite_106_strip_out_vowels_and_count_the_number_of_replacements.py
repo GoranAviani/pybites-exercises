@@ -35,6 +35,11 @@ Namespaces are one honking great idea -- let's do more of those!
 """
 vowels = 'aeiou'
 
+def strip_vowels_without_for_loop(text: str) -> Tuple[str, int]:
+    pass
+    text.replace('a', new, count)
+
+
 def strip_vowels(text: str) -> Tuple[str, int]:
     """Replace all vowels in the input text string by a star
        character (*).
@@ -66,6 +71,9 @@ def main():
     output, number_replacements = strip_vowels(text)
     test_strip_vowels_on_zen()
     test_strip_vowels_on_other_text()
+
+    output, number_replacements = strip_vowels(text)
+
 
 def test_strip_vowels_on_zen():
     output, number_replacements = strip_vowels(text)
