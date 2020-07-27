@@ -37,7 +37,7 @@ vowels = 'aeiou'
 
 def strip_vowels_without_for_loop(text: str) -> Tuple[str, int]:
     pass
-    text.replace('a', new, count)
+    #text.replace('a', new, count)
 
 
 def strip_vowels(text: str) -> Tuple[str, int]:
