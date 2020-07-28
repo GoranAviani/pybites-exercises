@@ -1,0 +1,13 @@
+"""
+    Complete the function below that receives a list of numbers and returns only the even numbers that are > 0 and
+    even (divisible by 2).
+    The challenge here is to use Python's elegant list comprehension feature to return this with one line of code
+    (while writing readable code).
+"""
+
+
+def main():
+    pass
+
+if __name__ == '__main__':
+    main()
