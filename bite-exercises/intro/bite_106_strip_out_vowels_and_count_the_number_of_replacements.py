@@ -65,9 +65,7 @@ def strip_vowels(text: str) -> Tuple[str, int]:
         text = text.replace(x, '*')
         text = text.replace(x.upper(), '*')
 
-    for letter in text:
-        if letter == '*':
-            counter += 1
+    counter = text.count("*")
 
     return text, counter
 
