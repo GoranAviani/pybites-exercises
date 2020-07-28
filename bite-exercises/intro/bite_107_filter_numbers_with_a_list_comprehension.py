@@ -5,9 +5,19 @@
     (while writing readable code).
 """
 
+def filter_positive_even_numbers(numbers):
+    """Receives a list of numbers, and returns a filtered list of only the
+       numbers that are both positive and even (divisible by 2), try to use a
+       list comprehension."""
+    pass
 
 def main():
-    pass
+    test_filter_positive_and_negatives()
+
+
+def test_filter_positive_and_negatives():
+    numbers = list(range(-10, 11))
+    assert filter_positive_even_numbers(numbers) == [2, 4, 6, 8, 10]
 
 if __name__ == '__main__':
     main()
