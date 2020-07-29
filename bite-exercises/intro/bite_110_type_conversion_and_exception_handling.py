@@ -17,7 +17,7 @@ def divide_numbers(numerator, denominator):
         d1 = int(denominator)
     except ValueError:
         raise
-    
+
     try:
         result = n1 / d1
         return result
