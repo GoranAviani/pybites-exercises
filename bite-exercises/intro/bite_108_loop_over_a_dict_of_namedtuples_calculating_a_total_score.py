@@ -6,8 +6,6 @@ ninja_belts = {'yellow': BeltStats(50, 11),
                'orange': BeltStats(100, 7),
                'green': BeltStats(175, 1),
                'blue': BeltStats(250, 5)}
-
-
 def get_total_points(belts=ninja_belts):
     """Calculate the amount of points rewarded on PyBites given the
        ninja_belts dictionary, formula: belt score x belt owners (aka ninjas)
@@ -28,3 +26,14 @@ def get_total_points(belts=ninja_belts):
         result += total_numbers
 
     return result
+
+
+def test_get_total_points_given_belts():
+    assert get_total_points(ninja_belts) == 2675
+
+def main():
+    test_get_total_points_given_belts()
+
+if __name__ == '__main__':
+    main()
+
