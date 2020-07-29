@@ -35,10 +35,6 @@ Namespaces are one honking great idea -- let's do more of those!
 """
 vowels = 'aeiou'
 
-def strip_vowels_without_for_loop(text: str) -> Tuple[str, int]:
-    pass
-    #text.replace('a', new, count)
-
 
 def strip_vowels(text: str) -> Tuple[str, int]:
     """Replace all vowels in the input text string by a star
@@ -54,17 +50,24 @@ def strip_vowels(text: str) -> Tuple[str, int]:
        The str/int types in the function defintion above are part
        of Python's new type hinting:
        https://docs.python.org/3/library/typing.html"""
-    result = ''
+#    result = ''
+#    counter = 0
+#    for x in text:
+#        letter = x
+#        if x.lower() in vowels:
+#            letter = '*'
+#            counter += 1
+#        result += letter
+#    return result, counter
+
     counter = 0
-    for x in text:
-        letter = x
-        if x.lower() in vowels:
-            letter = '*'
-            counter += 1
-        result += letter
+    for x in vowels:
+        text = text.replace(x, '*')
+        text = text.replace(x.upper(), '*')
 
-    return result, counter
+    counter = text.count("*")
 
+    return text, counter
 
 
 def main():
