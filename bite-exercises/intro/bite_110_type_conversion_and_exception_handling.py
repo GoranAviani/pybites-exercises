@@ -13,9 +13,14 @@ def divide_numbers(numerator, denominator):
        However if denominator is 0 catch the corresponding exception Python
        throws (cannot divide by 0), and return 0"""
     try:
-        return int(numerator) / int(denominator)
+        n1 = int(numerator)
+        d1 = int(denominator)
     except ValueError:
         raise
+    
+    try:
+        result = n1 / d1
+        return result
     except ZeroDivisionError:
         return 0
 
