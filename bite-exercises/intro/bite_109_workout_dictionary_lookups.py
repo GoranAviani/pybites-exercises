@@ -1,3 +1,5 @@
+import pytest
+
 WORKOUT_SCHEDULE = {'Friday': 'Shoulders',
                     'Monday': 'Chest+biceps',
                     'Saturday': 'Rest',
@@ -29,4 +31,38 @@ def get_workout_motd(day):
        Trivia: /etc/motd is a file on Unix-like systems that contains
        a 'message of the day'
     """
+    day = day.title()
+    if day not in WORKOUT_SCHEDULE:
+        return INVALID_DAY
+    else:
+        if WORKOUT_SCHEDULE[day] == 'Rest':
+            return CHILL_OUT
+        else:
+            return (TRAIN . format(WORKOUT_SCHEDULE[day]))
+
+def main():
     pass
+
+
+if __name__ == '__main__':
+    main()
+
+
+# About parametrize: https://pybit.es/pytest-coding-100-tests.html
+@pytest.mark.parametrize("day, expected", [
+    ('Monday', 'Go train Chest+biceps'),
+    ('monday', 'Go train Chest+biceps'),
+    ('Tuesday', 'Go train Back+triceps'),
+    ('TuEsdAy', 'Go train Back+triceps'),
+    ('Wednesday', 'Go train Core'),
+    ('wednesdaY', 'Go train Core'),
+    ('Thursday', 'Go train Legs'),
+    ('Friday', 'Go train Shoulders'),
+    ('Saturday', CHILL_OUT),
+    ('Sunday', CHILL_OUT),
+    ('sundAy', CHILL_OUT),
+    ('nonsense', INVALID_DAY),
+    ('monday2', INVALID_DAY),
+])
+def test_get_workout_valid_case_insensitive_dict_lookups(day, expected):
+    assert get_workout_motd(day) == expected
