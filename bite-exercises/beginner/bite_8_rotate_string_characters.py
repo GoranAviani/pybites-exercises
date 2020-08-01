@@ -7,6 +7,9 @@
     See tests for more info. Have fun!
 
 """
+def test_small_rotate():
+    assert rotate('hello', 2) == 'llohe'
+    assert rotate('hello', -2) == 'lohel'
 
 
 def rotate(string, n):
@@ -27,6 +30,3 @@ if __name__ == '__main__':
     main()
 
 
-def test_small_rotate():
-    assert rotate('hello', 2) == 'llohe'
-    assert rotate('hello', -2) == 'lohel'
