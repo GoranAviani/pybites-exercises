@@ -21,7 +21,12 @@ def rotate(string, n):
 def main():
     result = rotate('hello', 2)
     result = rotate('hello', -2)
-    t = result
+    test_small_rotate()
 
 if __name__ == '__main__':
     main()
+
+
+def test_small_rotate():
+    assert rotate('hello', 2) == 'llohe'
+    assert rotate('hello', -2) == 'lohel'
