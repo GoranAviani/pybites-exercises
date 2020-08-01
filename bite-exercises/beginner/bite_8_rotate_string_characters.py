@@ -13,4 +13,13 @@ def rotate(string, n):
     """Rotate characters in a string.
        Expects string and n (int) for number of characters to move.
     """
-    pass
+    if n > 0:
+        return string[n: len(string)] + string[0: n]
+    
+
+def main():
+    result = rotate('hello', 2)
+    t = result
+
+if __name__ == '__main__':
+    main()
