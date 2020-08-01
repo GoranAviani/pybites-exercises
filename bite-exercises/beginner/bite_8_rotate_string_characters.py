@@ -15,10 +15,12 @@ def rotate(string, n):
     """
     if n > 0:
         return string[n: len(string)] + string[0: n]
-    
+    else:
+        return string[len(string) + n: len(string)] + string[0: len(string) + n]
 
 def main():
     result = rotate('hello', 2)
+    result = rotate('hello', -2)
     t = result
 
 if __name__ == '__main__':
