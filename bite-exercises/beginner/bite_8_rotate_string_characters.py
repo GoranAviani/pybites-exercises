@@ -76,7 +76,7 @@ def main():
     test_rotation_of_n_bigger_than_string()
 
 
-    
+
 if __name__ == '__main__':
     main()
 
