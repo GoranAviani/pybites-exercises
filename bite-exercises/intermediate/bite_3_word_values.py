@@ -40,3 +40,11 @@ def calc_word_value(word):
 def max_word_value(words):
     """Given a list of words calculate the word with the maximum value and return it"""
     pass
+
+
+def main():
+    pass
+
+
+if __name__ == '__main__':
+    main()
