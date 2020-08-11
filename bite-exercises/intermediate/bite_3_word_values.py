@@ -14,7 +14,14 @@ import os
 import urllib.request
 
 # PREWORK
+def test_load_words():
+    words = load_words()
 
+    assert type(words) == list
+    assert len(words) == 235886
+    assert words[0] == 'A'
+    assert words[-1] == 'Zyzzogeton'
+    assert ' ' not in ''.join(words)
 
 scrabble_scores = [(1, "E A O I N R T L S U"), (2, "D G"), (3, "B C M P"),
                    (4, "F H V W Y"), (5, "K"), (8, "J X"), (10, "Q Z")]
@@ -57,9 +64,11 @@ def max_word_value(words):
 
 
 def main():
-    words1 = load_words()
-    words2 = calc_word_value(words1)
-    tests = words2
+    #words1 = load_words()
+    #words2 = calc_word_value(words1)
+    #tests = words2
+
+    test_load_words()
 
 if __name__ == '__main__':
     main()
@@ -67,11 +76,3 @@ if __name__ == '__main__':
 
 
 
-def test_load_words():
-    words = load_words()
-
-    assert type(words) == list
-    assert len(words) == 235886
-    assert words[0] == 'A'
-    assert words[-1] == 'Zyzzogeton'
-    assert ' ' not in ''.join(words)
