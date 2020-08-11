@@ -14,11 +14,7 @@ import os
 import urllib.request
 
 # PREWORK
-TMP = os.getenv("TMP", "/tmp")
-S3 = 'https://bites-data.s3.us-east-2.amazonaws.com/'
-DICT = 'dictionary.txt'
-DICTIONARY = os.path.join(TMP, DICT)
-urllib.request.urlretrieve(f'{S3}{DICT}', DICTIONARY)
+
 
 scrabble_scores = [(1, "E A O I N R T L S U"), (2, "D G"), (3, "B C M P"),
                    (4, "F H V W Y"), (5, "K"), (8, "J X"), (10, "Q Z")]
@@ -26,7 +22,17 @@ LETTER_SCORES = {letter: score for score, letters in scrabble_scores
                  for letter in letters.split()}
 
 # start coding
+def fetch_file():
+    TMP = os.getenv("TMP", "/tmp")
+    S3 = 'https://bites-data.s3.us-east-2.amazonaws.com/'
+    DICT = 'dictionary.txt'
+    DICTIONARY = os.path.join(TMP, DICT)
+    urllib.request.urlretrieve(f'{S3}{DICT}', DICTIONARY)
 
+    with open(DICTIONARY) as f:
+        for word in f.read().split():
+            print(word)
+            
 def load_words():
     """Load the words dictionary (DICTIONARY constant) into a list and return it"""
     pass
@@ -43,7 +49,8 @@ def max_word_value(words):
 
 
 def main():
-    words = load_words()
+    fetch_file()
+    #words = load_words()
 
 
 if __name__ == '__main__':
