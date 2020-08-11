@@ -22,7 +22,9 @@ LETTER_SCORES = {letter: score for score, letters in scrabble_scores
                  for letter in letters.split()}
 
 # start coding
-def fetch_file():
+def load_words():
+    """Load the words dictionary (DICTIONARY constant) into a list and return it"""
+    result = []
     TMP = os.getenv("TMP", "/tmp")
     S3 = 'https://bites-data.s3.us-east-2.amazonaws.com/'
     DICT = 'dictionary.txt'
@@ -31,12 +33,9 @@ def fetch_file():
 
     with open(DICTIONARY) as f:
         for word in f.read().split():
-            print(word)
+            result.append(word)
 
-def load_words():
-    """Load the words dictionary (DICTIONARY constant) into a list and return it"""
-    pass
-
+    return result
 
 def calc_word_value(word):
     """Given a word calculate its value using the LETTER_SCORES dict"""
@@ -49,9 +48,8 @@ def max_word_value(words):
 
 
 def main():
-    fetch_file()
-    #words = load_words()
-
+    words = load_words()
+    tests = words
 
 if __name__ == '__main__':
     main()
