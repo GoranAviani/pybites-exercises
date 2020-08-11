@@ -32,7 +32,7 @@ def fetch_file():
     with open(DICTIONARY) as f:
         for word in f.read().split():
             print(word)
-            
+
 def load_words():
     """Load the words dictionary (DICTIONARY constant) into a list and return it"""
     pass
