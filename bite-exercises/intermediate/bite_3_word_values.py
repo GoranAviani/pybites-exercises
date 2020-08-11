@@ -39,8 +39,16 @@ def load_words():
 
 def calc_word_value(word):
     """Given a word calculate its value using the LETTER_SCORES dict"""
-    pass
+    result = {}
+    for w in word:
+        value = 0
+        for letter in w:
+            for score in scrabble_scores:
+                if letter.upper() in score[1]:
+                    value += score[0]
+        result[w] = value
 
+    return result
 
 def max_word_value(words):
     """Given a list of words calculate the word with the maximum value and return it"""
@@ -48,8 +56,9 @@ def max_word_value(words):
 
 
 def main():
-    words = load_words()
-    tests = words
+    words1 = load_words()
+    words2 = calc_word_value(words1)
+    tests = words2
 
 if __name__ == '__main__':
     main()
