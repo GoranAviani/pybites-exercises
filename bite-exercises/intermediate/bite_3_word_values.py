@@ -43,8 +43,20 @@ def max_word_value(words):
 
 
 def main():
-    pass
+    words = load_words()
 
 
 if __name__ == '__main__':
     main()
+
+
+
+
+def test_load_words():
+    words = load_words()
+
+    assert type(words) == list
+    assert len(words) == 235886
+    assert words[0] == 'A'
+    assert words[-1] == 'Zyzzogeton'
+    assert ' ' not in ''.join(words)
