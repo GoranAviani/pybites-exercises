@@ -41,6 +41,7 @@ def calc_word_value(word):
     """Given a word calculate its value using the LETTER_SCORES dict"""
     result = {}
     for w in word:
+        print("Calculating value of {} word" .format(w))
         value = 0
         for letter in w:
             for score in scrabble_scores:
