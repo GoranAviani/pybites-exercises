@@ -29,6 +29,7 @@ def test_calc_word_value():
     assert calc_word_value('JuliaN') == 13
     assert calc_word_value('PyBites') == 14
     assert calc_word_value('benzalphenylhydrazone') == 56
+    print("Test passed!")
 
 
 scrabble_scores = [(1, "E A O I N R T L S U"), (2, "D G"), (3, "B C M P"),
@@ -55,14 +56,12 @@ def load_words():
 def calc_word_value(word):
     """Given a word calculate its value using the LETTER_SCORES dict"""
     result = {}
-    for w in word:
-        print("Calculating value of {} word" .format(w))
-        value = 0
-        for letter in w:
-            for score in scrabble_scores:
-                if letter.upper() in score[1]:
-                    value += score[0]
-        result[w] = value
+    value = 0
+    for letter in word:
+        for score in scrabble_scores:
+            if letter.upper() in score[1]:
+                value += score[0]
+    result = value
 
     return result
 
@@ -77,6 +76,7 @@ def main():
     #tests = words2
 
     test_load_words()
+    test_calc_word_value()
 
 if __name__ == '__main__':
     main()
