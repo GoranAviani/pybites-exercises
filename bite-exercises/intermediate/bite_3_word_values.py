@@ -34,6 +34,7 @@ def test_calc_word_value():
 def test_max_word_value():
     test_words = ['bob', 'julian', 'pybites', 'quit', 'barbeque']
     assert max_word_value(test_words) == 'barbeque'
+    words = load_words()
     assert max_word_value(words[20000:21000]) == 'benzalphenylhydrazone'
 
 scrabble_scores = [(1, "E A O I N R T L S U"), (2, "D G"), (3, "B C M P"),
