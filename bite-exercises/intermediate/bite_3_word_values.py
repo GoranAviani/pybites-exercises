@@ -72,8 +72,23 @@ def calc_word_value(word):
 
 def max_word_value(words):
     """Given a list of words calculate the word with the maximum value and return it"""
-    pass
+    result = {}
+    for word in words:
+        value = 0
+        for letter in word:
+            for score in scrabble_scores:
+                if letter.upper() in score[1]:
+                    value += score[0]
+        result[word] = value
 
+    max_word = ""
+    max_value = 0
+    for key, value in result.items():
+        if value > max_value:
+            max_value = value
+            max_word = key
+
+    return max_word
 
 def main():
     #words1 = load_words()
@@ -82,6 +97,7 @@ def main():
 
     test_load_words()
     test_calc_word_value()
+    test_max_word_value()
 
 if __name__ == '__main__':
     main()
