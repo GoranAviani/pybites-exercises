@@ -3,7 +3,7 @@
     There are 3 tasks to complete for this Bite:
         Done First write a function to read in the dictionary.txt file (= DICTIONARY constant), returning a list of words
         (note that the words are separated by new lines).
-        Second write a function that receives a word and calculates its value. Use the scores stored in LETTER_SCORES.
+        Done Second write a function that receives a word and calculates its value. Use the scores stored in LETTER_SCORES.
         Letters that are not in LETTER_SCORES should be omitted (= get a 0 score).
         With these two pieces in place, write a third function that takes a list of words and returns the word with
         the highest value.
@@ -31,6 +31,10 @@ def test_calc_word_value():
     assert calc_word_value('benzalphenylhydrazone') == 56
     print("Test passed!")
 
+def test_max_word_value():
+    test_words = ['bob', 'julian', 'pybites', 'quit', 'barbeque']
+    assert max_word_value(test_words) == 'barbeque'
+    assert max_word_value(words[20000:21000]) == 'benzalphenylhydrazone'
 
 scrabble_scores = [(1, "E A O I N R T L S U"), (2, "D G"), (3, "B C M P"),
                    (4, "F H V W Y"), (5, "K"), (8, "J X"), (10, "Q Z")]
