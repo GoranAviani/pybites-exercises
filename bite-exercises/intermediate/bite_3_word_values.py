@@ -1,7 +1,7 @@
 """
     Calculate the dictionary word that would have the most value in Scrabble.
     There are 3 tasks to complete for this Bite:
-        First write a function to read in the dictionary.txt file (= DICTIONARY constant), returning a list of words
+        Done First write a function to read in the dictionary.txt file (= DICTIONARY constant), returning a list of words
         (note that the words are separated by new lines).
         Second write a function that receives a word and calculates its value. Use the scores stored in LETTER_SCORES.
         Letters that are not in LETTER_SCORES should be omitted (= get a 0 score).
@@ -23,6 +23,13 @@ def test_load_words():
     assert words[-1] == 'Zyzzogeton'
     assert ' ' not in ''.join(words)
     print("Test passed")
+
+def test_calc_word_value():
+    assert calc_word_value('bob') == 7
+    assert calc_word_value('JuliaN') == 13
+    assert calc_word_value('PyBites') == 14
+    assert calc_word_value('benzalphenylhydrazone') == 56
+
 
 scrabble_scores = [(1, "E A O I N R T L S U"), (2, "D G"), (3, "B C M P"),
                    (4, "F H V W Y"), (5, "K"), (8, "J X"), (10, "Q Z")]
