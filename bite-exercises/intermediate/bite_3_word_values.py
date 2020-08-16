@@ -1,9 +1,9 @@
 """
     Calculate the dictionary word that would have the most value in Scrabble.
     There are 3 tasks to complete for this Bite:
-        First write a function to read in the dictionary.txt file (= DICTIONARY constant), returning a list of words
+        Done First write a function to read in the dictionary.txt file (= DICTIONARY constant), returning a list of words
         (note that the words are separated by new lines).
-        Second write a function that receives a word and calculates its value. Use the scores stored in LETTER_SCORES.
+        Done Second write a function that receives a word and calculates its value. Use the scores stored in LETTER_SCORES.
         Letters that are not in LETTER_SCORES should be omitted (= get a 0 score).
         With these two pieces in place, write a third function that takes a list of words and returns the word with
         the highest value.
@@ -23,6 +23,20 @@ def test_load_words():
     assert words[-1] == 'Zyzzogeton'
     assert ' ' not in ''.join(words)
     print("Test passed")
+
+def test_calc_word_value():
+    assert calc_word_value('bob') == 7
+    assert calc_word_value('JuliaN') == 13
+    assert calc_word_value('PyBites') == 14
+    assert calc_word_value('benzalphenylhydrazone') == 56
+    print("Test passed!")
+
+def test_max_word_value():
+    test_words = ['bob', 'julian', 'pybites', 'quit', 'barbeque']
+    assert max_word_value(test_words) == 'barbeque'
+    words = load_words()
+    assert max_word_value(words[20000:21000]) == 'benzalphenylhydrazone'
+    print("Test passed..")
 
 scrabble_scores = [(1, "E A O I N R T L S U"), (2, "D G"), (3, "B C M P"),
                    (4, "F H V W Y"), (5, "K"), (8, "J X"), (10, "Q Z")]
@@ -48,21 +62,34 @@ def load_words():
 def calc_word_value(word):
     """Given a word calculate its value using the LETTER_SCORES dict"""
     result = {}
-    for w in word:
-        print("Calculating value of {} word" .format(w))
-        value = 0
-        for letter in w:
-            for score in scrabble_scores:
-                if letter.upper() in score[1]:
-                    value += score[0]
-        result[w] = value
+    value = 0
+    for letter in word:
+        for score in scrabble_scores:
+            if letter.upper() in score[1]:
+                value += score[0]
+    result = value
 
     return result
 
 def max_word_value(words):
     """Given a list of words calculate the word with the maximum value and return it"""
-    pass
+    result = {}
+    for word in words:
+        value = 0
+        for letter in word:
+            for score in scrabble_scores:
+                if letter.upper() in score[1]:
+                    value += score[0]
+        result[word] = value
 
+    max_word = ""
+    max_value = 0
+    for key, value in result.items():
+        if value > max_value:
+            max_value = value
+            max_word = key
+
+    return max_word
 
 def main():
     #words1 = load_words()
@@ -70,6 +97,8 @@ def main():
     #tests = words2
 
     test_load_words()
+    test_calc_word_value()
+    test_max_word_value()
 
 if __name__ == '__main__':
     main()
